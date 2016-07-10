@@ -1,0 +1,21 @@
+<div class = "medium-6 medium-centered large-4 large-centered columns log-in-form">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row column">
+      <h4 class="text-center">Inicia Sesión</h4>
+        <%= f.label :email, placeholder: "ejemplo@ejemplo.com" %><br />
+        <%= f.email_field :email, autofocus: true, required: true %>
+
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", required: true %>
+
+      <% if devise_mapping.rememberable? -%>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+      <% end -%>
+        <p><%= f.submit "Inicia Sesion", class: "button expanded" %></p>
+      </div>
+  <% end %>
+    <p class="text-center">
+      <%= render "devise/shared/links" %>
+    </p>
+</div>

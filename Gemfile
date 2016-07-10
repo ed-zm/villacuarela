@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'foundation-rails'
 #use Devise to handle users
 gem 'devise'
+# Use carrierwave to help the upload to cloudinary
+gem 'carrierwave'
+# Use cloudinary to upload images and access them through API
+gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

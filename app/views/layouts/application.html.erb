@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,22 +12,31 @@
   </head>
 
   <body>
-  	<div class="fixed contain-to-grid">
-	  	<nav class = "top-bar hide-for-small" data-topbar role = "navigation">
-	  		<ul class = "title-area">
-	  			<li class = "name">
-	  				<h3><a href="/">Villacuarela</a></h3>
-	  			</li>
-	  		</ul>
-	  		<section class="top-bar-section">
-	  			<ul class="right">
-	  				<li class="has-form"><a href = "#" class = "button">Inicia Sesion</a></li>
-	  			</ul>
-	  		</section>
-	  	</nav>
-	 </div>
-
-    <%= yield %>
-
+<div class="top-bar" id="main-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li><%= link_to "Villacuarela", root_path, class: "button" %></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu" data-responsive-menu= "drilldown medium-dropdown">
+    	<li><a href = "" class = "button">Quienes Somos</a></li>
+      <li><%= link_to "Portafolio", posts_path, class: "button" %></li>
+      <li class="has-submenu">
+      <% if user_signed_in? %>
+        <a href="" class = "button"><%= current_user.email %></a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><%= link_to "Mi Perfil", edit_user_registration_path %></li>
+          <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+      <% else %>
+      <li><%= link_to "Ingresa", new_user_session_path, class: "button expanded" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row container column large-12"><%= yield %></div>  	
+	
   </body>
 </html>

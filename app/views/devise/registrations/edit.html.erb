@@ -1,0 +1,35 @@
+<div class = "medium-6 medium-centered large-4 large-centered columns log-in-form">
+  <h2 class = "text-center">Editar Perfil</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="row column">
+        <%= f.label "Email" %><br />
+        <%= f.email_field :email, autofocus: true %>
+ 
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><p>Esperando confirmacion de: <%= resource.unconfirmed_email %></p></div>
+      <% end %>
+        <%= f.label "Contraseña" %> <i>(Dejala en blanco si no quieres cambiarla)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> Caracteres Mínimos</em>
+        <% end %>
+
+        <%= f.label "Confirmación de Contraseña" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label "Contraseña Actual" %> <i>(Necesitamos tu contraseña actual para poder realizar los cambios)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" %>
+
+        <p><%= f.submit "Actualizar", class: "button expanded" %></p>
+    </div>
+  <% end %>
+  <br><br>
+  <div class="row">
+    <h3 class = "text-center">Cancelar Mi Cuenta</h3>
+
+    <p class = "text-center">Inconforme? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estás Seguro?" }, method: :delete, class: "button medium-centered" %></p>
+  </div>
+  <p class = "text-center"><%= link_to "Volver", :back %></p>
+</div>

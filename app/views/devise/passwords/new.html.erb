@@ -1,0 +1,14 @@
+<div class = "medium-6 medium-centered large-4 large-centered columns log-in-form">
+	<h2 class = "text-center">Olvidaste tu contraseña?</h2>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		<div class="row column">
+		  <%= devise_error_messages! %>
+		    <%= f.label "Introduce tu Email" %><br />
+		    <%= f.email_field :email, autofocus: true %>
+		  </div>
+		    <%= f.submit "Enviame las instrucciones", class: "button expanded" %>
+
+	<% end %>
+	<p class = "text-center"><%= render "devise/shared/links" %></p>
+</div>

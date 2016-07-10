@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h1 class = "text-center">Trabajos Realizados</h1>
+<div class = "medium-12 large-12 columns">
+  <% @posts.each do |post| %>
+    <div class="column medium-3">
+      <ul class="post-detail text-center no-bullet">
+        <li class = "title"><%= post.title %></li>
+        <li><img src = <%= post.image %> class = "thumnail" width = "200" height = "200" ></li>
+        <li class = "description"><%= post.content %></li>
+        <li><b><%= post.user %></b></li>
+        <li><%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %> <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li class = "price"><%= post.price %>Bs</li>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <br>
+  </div>
+
+<p class = "text-center"><b><%= link_to 'Nuevo', new_post_path, class: "button text-color-white"%></b></p>
